@@ -1,6 +1,29 @@
 ---
 name: odoo-service
-description: "Complete Odoo server lifecycle manager — run, deploy, initialize, and manage Odoo across local venv, Docker, and any IDE. Handles server startup/shutdown, environment initialization, database management, Docker orchestration, and IDE configuration for Odoo 14-19."
+description: |
+  Complete Odoo server lifecycle manager — run, deploy, initialize, and manage Odoo across local venv, Docker, and any IDE. Handles server startup/shutdown, environment initialization, database management, Docker orchestration, and IDE configuration for Odoo 14-19.
+
+
+  <example>
+  Context: User wants to start the Odoo server
+  user: "Start the Odoo 17 server for my TAQAT project"
+  assistant: "I will use the odoo-service skill to activate the virtual environment, locate the TAQAT17.conf config, and start the server with the correct addons path."
+  <commentary>Core trigger - server startup request.</commentary>
+  </example>
+
+  <example>
+  Context: User wants to initialize a new database
+  user: "Initialize a new Odoo 17 database called taqat_dev and install my module"
+  assistant: "I will use the odoo-service skill to run the init command with --stop-after-init, create the database, and install the specified module."
+  <commentary>Database init trigger - new environment setup.</commentary>
+  </example>
+
+  <example>
+  Context: User wants IDE run configuration
+  user: "Set up a PyCharm run configuration for my Odoo 17 project"
+  assistant: "I will use the odoo-service skill to generate a .run/odoo-service.xml run configuration pointing to the correct Python interpreter and config file."
+  <commentary>IDE integration trigger - run config generation.</commentary>
+  </example>
 version: "1.0.0"
 author: "TaqaTechno"
 license: "MIT"
@@ -127,7 +150,7 @@ You can force an environment by passing flags:
 
 ```powershell
 # Step 1: Navigate to your Odoo version directory
-cd C:\odoo\odoo17
+cd C:\TQ-WorkSpace\odoo\odoo17
 
 # Step 2: Create virtual environment
 python -m venv .venv
@@ -214,10 +237,10 @@ if not check_python_compatibility(17):
 
 ```bash
 # Separate venv per Odoo version
-C:\odoo\odoo14\.venv\   # Python 3.8
-C:\odoo\odoo15\.venv\   # Python 3.9
-C:\odoo\odoo17\.venv\   # Python 3.11
-C:\odoo\odoo18\.venv\   # Python 3.11
+C:\TQ-WorkSpace\odoo\odoo14\.venv\   # Python 3.8
+C:\TQ-WorkSpace\odoo\odoo15\.venv\   # Python 3.9
+C:\TQ-WorkSpace\odoo\odoo17\.venv\   # Python 3.11
+C:\TQ-WorkSpace\odoo\odoo18\.venv\   # Python 3.11
 
 # Each has its own requirements installed independently
 # Never share venvs across Odoo versions
@@ -276,7 +299,7 @@ $job.Id  # Save this to stop later
 Start-Process python -ArgumentList "-m odoo -c conf\myproject.conf" -WindowStyle Hidden -RedirectStandardOutput "logs\odoo.log" -RedirectStandardError "logs\odoo_err.log"
 
 # Method 4: Windows service (nssm recommended for production)
-nssm install OdooService "python" "-m odoo -c C:\odoo\odoo17\conf\myproject.conf"
+nssm install OdooService "python" "-m odoo -c C:\TQ-WorkSpace\odoo\odoo17\conf\myproject.conf"
 nssm start OdooService
 ```
 

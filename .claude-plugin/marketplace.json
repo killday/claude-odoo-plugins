@@ -5,7 +5,7 @@
     "email": "ahmed.lakosha94@gmail.com"
   },
   "metadata": {
-    "description": "Cloud Market — Professional Odoo development plugins for Claude Code",
+    "description": "Cloud Market  -  Professional Odoo development plugins for Claude Code",
     "version": "1.2.0",
     "plugins_count": 7
   },
@@ -45,7 +45,7 @@
     },
     {
       "name": "odoo-test",
-      "description": "Odoo testing toolkit — test generation, mock data, coverage analysis (v14-19)",
+      "description": "Odoo testing toolkit  -  test generation, mock data, coverage analysis (v14-19)",
       "source": "./",
       "strict": false,
       "skills": [
@@ -57,7 +57,7 @@
     },
     {
       "name": "odoo-security",
-      "description": "Odoo security audit — access rules, route auth, sudo() analysis with risk scoring",
+      "description": "Odoo security audit  -  access rules, route auth, sudo() analysis with risk scoring",
       "source": "./",
       "strict": false,
       "skills": [
@@ -69,7 +69,7 @@
     },
     {
       "name": "odoo-i18n",
-      "description": "Odoo i18n toolkit — extract, validate, report missing translations, Arabic/RTL (v14-19)",
+      "description": "Odoo i18n toolkit  -  extract, validate, report missing translations, Arabic/RTL (v14-19)",
       "source": "./",
       "strict": false,
       "skills": [
@@ -81,7 +81,7 @@
     },
     {
       "name": "odoo-service",
-      "description": "Complete Odoo server lifecycle manager — start, stop, deploy, initialize across local venv, Docker, and any IDE (PyCharm, VSCode). Handles environment setup, database management, Docker orchestration, and IDE config generation for Odoo 14-19",
+      "description": "Complete Odoo server lifecycle manager  -  start, stop, deploy, initialize across local venv, Docker, and any IDE (PyCharm, VSCode). Handles environment setup, database management, Docker orchestration, and IDE config generation for Odoo 14-19",
       "source": "./",
       "strict": false,
       "skills": [
