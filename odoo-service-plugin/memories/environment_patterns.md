@@ -10,7 +10,7 @@ Complete reference for setting up and managing Odoo environments across Windows,
 
 ```powershell
 # Navigate to Odoo version directory
-cd C:\TQ-WorkSpace\odoo\odoo17
+cd /path/to/odoo17
 
 # Create venv using system Python
 python -m venv .venv
@@ -279,9 +279,9 @@ taskkill /IM python.exe /F
 # or: choco install nssm
 
 # Install Odoo as Windows service
-nssm install OdooTAQAT "C:\TQ-WorkSpace\odoo\odoo17\.venv\Scripts\python.exe" "-m odoo -c C:\TQ-WorkSpace\odoo\odoo17\conf\myproject.conf"
-nssm set OdooTAQAT AppDirectory "C:\TQ-WorkSpace\odoo\odoo17"
-nssm set OdooTAQAT AppEnvironmentExtra PYTHONPATH=C:\TQ-WorkSpace\odoo\odoo17
+nssm install OdooTAQAT "/path/to/odoo17\.venv\Scripts\python.exe" "-m odoo -c /path/to/odoo17\conf\myproject.conf"
+nssm set OdooTAQAT AppDirectory "/path/to/odoo17"
+nssm set OdooTAQAT AppEnvironmentExtra PYTHONPATH=/path/to/odoo17
 nssm start OdooTAQAT
 
 # Service management

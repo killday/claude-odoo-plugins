@@ -353,8 +353,9 @@ def reset_admin_password(
     """Reset the Odoo admin user password directly in PostgreSQL."""
     env = _pg_env(user, password)
 
-    # Use bcrypt hash or plaintext (Odoo will re-hash on next login)
-    sql = f"UPDATE res_users SET password='{new_password}' WHERE login='admin';"
+    # Escape single quotes to prevent SQL injection
+    escaped_password = new_password.replace("'", "''")
+    sql = f"UPDATE res_users SET password='{escaped_password}' WHERE login='admin';"
     cmd = (
         ["psql"] +
         _pg_args(host, port, user) +

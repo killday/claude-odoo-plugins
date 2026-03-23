@@ -850,12 +850,10 @@ Located in `odoo-service/scripts/`:
 | Script | Used By |
 |--------|---------|
 | `server_manager.py` | `start`, `stop` |
-| `env_initializer.py` | `init` |
+| `env_initializer.py` | `init`, `scaffold` |
 | `db_manager.py` | `db` |
 | `docker_manager.py` | `docker` |
 | `ide_configurator.py` | `ide` |
-| `module_scaffolder.py` | `scaffold` |
-| `readiness_checker.py` | `ready` |
 
 ---
 

@@ -25,7 +25,11 @@
       "source": "./",
       "strict": false,
       "skills": [
-        "./odoo-frontend-plugin/odoo-frontend"
+        "./odoo-frontend-plugin/skills/theme-create",
+        "./odoo-frontend-plugin/skills/theme-scss",
+        "./odoo-frontend-plugin/skills/theme-design",
+        "./odoo-frontend-plugin/skills/theme-snippets",
+        "./odoo-frontend-plugin/skills/frontend-js"
       ],
       "commands": [
         "./odoo-frontend-plugin/commands"
@@ -33,14 +37,11 @@
     },
     {
       "name": "odoo-report",
-      "description": "Odoo email templates & QWeb reports — 1 command (/odoo-report) with create-email, create-report, migrate sub-commands. Analysis, debug, fix, validate via natural language.",
+      "description": "Odoo email templates & QWeb reports — create, validate, migrate, and debug across Odoo 14-19. Pure skill-driven, no commands needed.",
       "source": "./",
       "strict": false,
       "skills": [
         "./odoo-report-plugin/odoo-report"
-      ],
-      "commands": [
-        "./odoo-report-plugin/commands"
       ]
     },
     {

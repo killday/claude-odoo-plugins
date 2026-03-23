@@ -1,9 +1,9 @@
 # Odoo Service Manager Plugin
 
-[![Version](https://img.shields.io/badge/version-2.0.0-blue)](https://github.com/taqat-techno/plugins)
+[![Version](https://img.shields.io/badge/version-2.0.0-blue)](https://github.com/taqat-techno/odoo-plugins)
 [![Odoo](https://img.shields.io/badge/odoo-14--19-green)](https://www.odoo.com)
 [![License](https://img.shields.io/badge/license-MIT-lightgrey)](LICENSE)
-[![Author](https://img.shields.io/badge/author-TaqaTechno-purple)](https://taqat-techno.com)
+[![Author](https://img.shields.io/badge/author-TaqaTechno-purple)](https://www.taqatechno.com)
 
 Complete Odoo server lifecycle manager for Claude Code. Run, deploy, initialize, and manage Odoo servers across any environment and any IDE — without manual setup.
 
@@ -257,30 +257,26 @@ odoo-service-plugin/
 │   └── plugin.json              ← Plugin metadata and registration
 │
 ├── odoo-service/
-│   ├── SKILL.md                 ← 900+ line skill definition
+│   ├── SKILL.md                 ← Skill definition (capabilities + quick reference)
 │   └── scripts/
+│       ├── shared.py            ← Shared utilities (env detection, platform helpers)
 │       ├── server_manager.py    ← Start/stop/status/restart Odoo
 │       ├── env_initializer.py   ← Venv, PostgreSQL, conf setup
-│       ├── db_manager.py        ← Backup/restore/create/drop
+│       ├── db_manager.py        ← Backup/restore/create/drop (local + Docker)
 │       ├── docker_manager.py    ← Docker lifecycle + file generation
 │       └── ide_configurator.py  ← PyCharm/VSCode config generation
 │
 ├── commands/
-│   ├── odoo-service.md          ← /odoo-service (main help)
-│   ├── odoo-start.md            ← /odoo-start
-│   ├── odoo-stop.md             ← /odoo-stop
-│   ├── odoo-init.md             ← /odoo-init
-│   ├── odoo-db.md               ← /odoo-db
-│   ├── odoo-docker.md           ← /odoo-docker
-│   └── odoo-ide.md              ← /odoo-ide
+│   └── odoo-service.md          ← /odoo-service unified command
 │
 ├── memories/
 │   ├── environment_patterns.md  ← venv, Docker, OS-specific patterns
 │   ├── server_commands.md       ← All startup flags, config reference
-│   └── database_patterns.md    ← PostgreSQL operations, backup strategy
+│   ├── database_patterns.md     ← PostgreSQL operations, backup strategy
+│   └── deployment_patterns.md   ← CI/CD, SSH deploy, health checks
 │
 ├── hooks/
-│   └── hooks.json               ← 12 smart trigger hooks
+│   └── hooks.json               ← PostToolUse prompt hook for Odoo file changes
 │
 └── README.md                    ← This file
 ```
@@ -351,24 +347,18 @@ python ide_configurator.py --gitignore-only
 
 ---
 
-## Smart Hooks
+## Smart Hook
 
-The plugin includes 12 automatic triggers that fire based on context:
+The plugin includes a PostToolUse prompt hook that fires when files are modified via Write or Edit. It pattern-matches the modified file and suggests appropriate next actions:
 
-| Hook | Triggers When | Suggests |
-|------|--------------|---------|
-| requirements-changed | `requirements.txt` modified | Run `pip install -r requirements.txt` |
-| conf-file-changed | `*.conf` file modified | Restart Odoo server |
-| docker-compose-changed | `docker-compose.yml` modified | `docker-compose up -d` |
-| dockerfile-changed | `Dockerfile` modified | Rebuild image |
-| model-file-created | New `models/*.py` created | `python -m odoo ... -u MODULE` |
-| manifest-changed | `__manifest__.py` modified | Update module, bump version |
-| pre-commit-reminder | Before git commit | Restart server after commit |
-| error-address-in-use | Port already in use error | `/odoo-stop` command |
-| error-postgresql-connection | Cannot connect to PostgreSQL | Start PostgreSQL service |
-| error-no-module-named | Python ImportError | `pip install` or requirements |
-| error-access-denied | Odoo AccessDenied error | Check admin_passwd in conf |
-| error-database-not-exist | DB not found error | `/odoo-db create` command |
+| File Pattern | Suggestion |
+|-------------|-----------|
+| `requirements*.txt` | Run `pip install -r requirements.txt` |
+| `conf/*.conf` | Restart Odoo server |
+| `docker-compose*.yml` | `docker-compose up -d` |
+| `Dockerfile` | Rebuild image |
+| `models/*.py` (new) | Import in `__init__.py`, add security, update module |
+| `__manifest__.py` | Update module, bump version |
 
 ---
 
@@ -456,8 +446,8 @@ healthcheck:
 
 This plugin is maintained by TaqaTechno. To report issues or suggest improvements:
 
-1. Submit issues via GitHub: https://github.com/taqat-techno/plugins/issues
-2. Contact: support@example.com
+1. Submit issues via GitHub: https://github.com/taqat-techno/odoo-plugins/issues
+2. Contact: info@taqatechno.com
 
 ---
 
@@ -477,4 +467,4 @@ MIT License — See LICENSE file for details.
 
 *Built by TaqaTechno — Odoo development specialists since 2019*
 *Plugin v2.0.0 — unified sub-command architecture*
-*Website: https://taqat-techno.com | Email: support@example.com*
+*Website: https://www.taqatechno.com | Email: info@taqatechno.com*
