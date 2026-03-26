@@ -2,6 +2,8 @@
 
 > **7 professional Odoo development plugins** for [Claude Code](https://claude.ai/code) — covering the full Odoo development lifecycle from upgrade migrations to testing, security, internationalization, and server lifecycle management.
 
+> **💡 New to AI coding tools?** See [QUICK_START.md](./QUICK_START.md) for setup guides for Claude Code, GitHub Copilot, Cursor, and JetBrains.
+
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Plugin%20Marketplace-blue)](https://claude.ai/code)
 [![Odoo Versions](https://img.shields.io/badge/Odoo-14%20→%2019-purple)](https://www.odoo.com)
 [![License](https://img.shields.io/badge/License-LGPL--3-green)](./LICENSE)
