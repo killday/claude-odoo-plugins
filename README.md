@@ -2,6 +2,8 @@
 
 > **7 professional Odoo development plugins** for [Claude Code](https://claude.ai/code) — covering the full Odoo development lifecycle from upgrade migrations to testing, security, internationalization, and server lifecycle management.
 
+> **💡 New to AI coding tools?** See [QUICK_START.md](./QUICK_START.md) for setup guides for Claude Code, GitHub Copilot, Cursor, and JetBrains.
+
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Plugin%20Marketplace-blue)](https://claude.ai/code)
 [![Odoo Versions](https://img.shields.io/badge/Odoo-14%20→%2019-purple)](https://www.odoo.com)
 [![License](https://img.shields.io/badge/License-LGPL--3-green)](./LICENSE)
@@ -16,6 +18,8 @@ claude mcp add cloud-market [https://github.com/ahmed-lakosha/odoo-plugins.git]
 ```
 
 Or install individual plugins from the marketplace by referencing this repo.
+
+> **Note on GitHub Copilot**: These are Claude Code plugins and cannot be directly installed in GitHub Copilot due to different plugin architectures. However, you can use both tools together or adapt the knowledge - see [GITHUB_COPILOT_COMPATIBILITY.md](./GITHUB_COPILOT_COMPATIBILITY.md) for detailed options.
 
 ---
 
@@ -133,6 +137,42 @@ cloud-market/
 ├── CLAUDE_CODE_PLUGIN_DEVELOPMENT_GUIDE.md
 └── LICENSE
 ```
+
+---
+
+## AI Tool Compatibility
+
+### Claude Code (Native Support) ✅
+
+These plugins are designed for **Claude Code CLI** and work out-of-the-box:
+
+```bash
+# Install all plugins
+claude mcp add cloud-market https://github.com/ahmed-lakosha/odoo-plugins.git
+
+# Use any plugin
+claude /odoo-test generate sale.order
+claude /odoo-upgrade --from=16 --to=17
+```
+
+### GitHub Copilot (See Compatibility Guide) ℹ️
+
+These plugins **cannot be directly installed** in GitHub Copilot due to different architectures. However, you have several options:
+
+1. **Use Claude Code alongside GitHub Copilot** (recommended)
+2. Copy SKILL.md files to `.github/copilot-instructions.md` for team-wide context
+3. Copy specific skills to workspace for project-specific context
+4. Build a custom Copilot Extension (advanced, 40-80 hours)
+
+**📖 See [GITHUB_COPILOT_COMPATIBILITY.md](./GITHUB_COPILOT_COMPATIBILITY.md)** for detailed instructions and examples.
+
+**📋 Template**: Use [examples/.github-copilot-instructions-template.md](./examples/.github-copilot-instructions-template.md) as a starting point for your Odoo project's Copilot instructions.
+
+### Other AI Tools
+
+- **Cursor IDE**: Can use workspace context - copy SKILL.md files to `.cursor/` directory
+- **JetBrains AI**: Similar to Copilot - use project context or custom instructions
+- **VS Code Copilot Chat**: Use `.github/copilot-instructions.md` for workspace context
 
 ---
 
